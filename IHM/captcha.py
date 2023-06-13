@@ -77,6 +77,14 @@ def show_page(self):
             # charger les poids entraînés
             model.load_weights("../model/model_weights.h5")
             prediction = model.predict(test_image, verbose = False)
+            print(prediction)
+            # Recupere les 3 plus grandes valeurs avec leurs pourcentages
+            top3 = np.argsort(prediction[0])[:-4:-1]
+            # Affiche les 3 plus grandes valeurs avec leurs pourcentages sans for
+            print("Prediction: ", classes[top3[0]], "(", round(prediction[0][top3[0]] * 100, 2), "%)")
+            for i in range(3):
+                print("{}".format(classes[top3[i]])+" ({:.3})".format(prediction[0][top3[i]]))
+
             resultat = "false"
             print(randomNumber, int(np.argmax(prediction)))
             if randomNumber == int(np.argmax(prediction)): 
@@ -99,7 +107,7 @@ def show_page(self):
                 
                 st.markdown(html_code, unsafe_allow_html=True)
             else:
-                st.error("The result given by the AI is "+ classes[np.argmax(prediction)] + " so it's " + resultat + " !")
+                st.error("The result given by the AI is "+ classes[np.argmax(prediction)] + " at " + str(round(prediction[0][top3[0]] * 100, 2)) + "%" + " so it's " + resultat + " !")
                 random_int = random.choice([1, 2])
 
                 # Lire le fichier GIF en tant que tableau d'octets
