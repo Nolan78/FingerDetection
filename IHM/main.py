@@ -64,7 +64,7 @@ if st.button("Save"):
         img.save("temp.png")
 
         # Save the image as a PNG file
-        pathTempImage = "temp-image/"
+        pathTempImage = "../temp-image/"
         timestamp = str(int(time.time()))
         fileName = timestamp + "-" + str(randomNumber) + ".jpg"
         file_path_temp = os.path.join(pathTempImage, fileName)
@@ -86,7 +86,7 @@ if st.button("Save"):
         if randomNumber == int(np.argmax(prediction)): 
             resultat = "true"
             # copy temp file to retrain directory
-            file_path_re_train = "retrain-image/"
+            file_path_re_train = "../retrain-image/"
             file_path_retrain = os.path.join(file_path_re_train, fileName)
             shutil.copyfile(file_path_temp, file_path_retrain)
             # TODO: Entrainer sur les images de retrain-image/ puis re save les poids
