@@ -1,5 +1,5 @@
-/train-image
+/train-image/*
 /train-bigger-image
 /retrain-image
 /test-image
-/temp-image
+/temp-image/*
