@@ -5,7 +5,7 @@ import numpy as np
 from tqdm import tqdm
 import shutil
 
-# dimensions des images d'entrée
+# dimensions des images d"entrée
 img_rows, img_cols = 28, 28
 pathTest = "test-image/"
 pathTrain = "train-image/"
@@ -17,7 +17,7 @@ model = load_model("model/model.h5")
 # charger les poids entraînés
 model.load_weights("model/model_weights.h5")
 
-# fonction pour prétraiter l'image
+# fonction pour prétraiter l"image
 def preprocess_image(img_path):
     img = load_img(img_path, target_size=(img_rows, img_cols), color_mode = "grayscale")
     x = img_to_array(img)

@@ -3,3 +3,5 @@
 /retrain-image
 /test-image
 /temp-image/*
+/model/X_numpy_array.npy
+/model/Y_numpy_array.npy

@@ -1,9 +1,8 @@
-import os
 import numpy as np
 import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Conv2D, MaxPooling2D, Flatten, BatchNormalization
-from keras.utils import to_categorical, load_img, img_to_array
+from keras.utils import to_categorical
 import keras.backend as K
 from sklearn.model_selection import train_test_split
 
@@ -13,23 +12,11 @@ classes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 img_rows = 28 
 img_cols = 28
 
-X = []
-Y = []
+# On charge les tableau d'image pre enregistrer
+X = np.load("model/X_numpy_array.npy")
+Y = np.load("model/Y_numpy_array.npy")
 
-for classe in classes:
-    for file in os.listdir(path + classe + "/"):
-        # print(path + classe + "/" + file)
-        img = load_img(path + classe + "/" + file, target_size=(img_rows, img_cols), color_mode = "grayscale")
-        x = img_to_array(img)
-        x = np.expand_dims(x, axis=0)
-        x /= 255.
-        X.append(np.array(x))
-        Y.append(classes.index(classe))
-        
-X = np.array(X)
-Y = np.array(Y)  
-
-#Now defining some parameters for our model
+# Now defining some parameters for our model
 num_classes = 10
 epochs = 30
 
