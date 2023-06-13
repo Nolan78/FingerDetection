@@ -36,3 +36,27 @@ Executé le init.py au clonage du repo
         </tr>
     </tbody>
 </table>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="5">Statistique</th>
+        </tr>
+        <tr>
+            <th>Source</th>
+            <th>Accuracy 20 epochs</th>
+            <th>Image 20 epochs</th>
+            <th>Accuracy 30 epochs</th>
+            <th>Image 30 epochs</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Set de base: 40 000 images</td>
+            <td>99.22 %</td>
+            <td><img src="stat/model_loss_accuracy_base_20.png"></th>
+            <td>99.09%</td>
+            <td><img src="stat/model_loss_accuracy_base_30.png"></th>
+        </tr>
+    </tbody>
+</table>
