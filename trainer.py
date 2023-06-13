@@ -85,5 +85,5 @@ print("Score is :",score)
 print("Accuracy :",acc)
 
 # export du modèle
-model.save("model.h5")
-model.save_weights("model_weights.h5")
+model.save("model/model.h5")
+model.save_weights("model/model_weights.h5")
