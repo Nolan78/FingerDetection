@@ -22,7 +22,7 @@ Executé le init.py au clonage du repo
         <tr>
             <td>Decaler les image a gauche a droite en haut en bas</td>
             <td>Clément</td>
-            <td>En cours</td>
+            <td>Fait</td>
         </tr>
         <tr>
             <td>Re entrainé ensuite</td>
