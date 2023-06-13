@@ -78,7 +78,7 @@ plt.title('model loss')
 plt.ylabel('loss and accuracy')
 plt.xlabel('epoch')
 plt.legend(['train_loss', 'train_accuracy'], loc='upper right')
-plt.savefig('model_loss_accuracy.png')
+plt.savefig('stat/model_loss_accuracy.png')
 
 score ,acc = model.evaluate(x_test,y_test)
 print("Score is :",score)
