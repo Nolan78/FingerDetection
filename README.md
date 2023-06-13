@@ -20,11 +20,6 @@ Executé le init.py au clonage du repo
             <td>Fait</td>
         </tr>
         <tr>
-            <td>Mettre des variantes de couleurs dans les images</td>
-            <td>Clément</td>
-            <td>En cours</td>
-        </tr>
-        <tr>
             <td>Decaler les image a gauche a droite en haut en bas</td>
             <td>Clément</td>
             <td>En cours</td>
@@ -52,11 +47,18 @@ Executé le init.py au clonage du repo
     </thead>
     <tbody>
         <tr>
-            <td>Set de base: 40 000 images</td>
+            <td>Set de base: 41 979 images</td>
             <td>99.22 %</td>
             <td><img src="stat/model_loss_accuracy_base_20.png"></th>
-            <td>99.09%</td>
+            <td>99.09 %</td>
             <td><img src="stat/model_loss_accuracy_base_30.png"></th>
+        </tr>
+        <tr>
+            <td>Image decalle: 209 895 images</td>
+            <td>99.22 %</td>
+            <td><img src="stat/model_loss_accuracy_decalle_20.png"></th>
+            <td>99.85 %</td>
+            <td><img src="stat/model_loss_accuracy_decalle_30.png"></th>
         </tr>
     </tbody>
 </table>

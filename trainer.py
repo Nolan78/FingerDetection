@@ -6,6 +6,7 @@ from keras.utils import to_categorical
 import keras.backend as K
 from sklearn.model_selection import train_test_split
 
+nom = "decalle"
 path = "train-image/"
 classes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
@@ -18,7 +19,7 @@ Y = np.load("model/Y_numpy_array.npy")
 
 # Now defining some parameters for our model
 num_classes = 10
-epochs = 30
+epochs = 20
 
 x_train,x_test,y_train,y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 
@@ -65,7 +66,7 @@ plt.title("model loss")
 plt.ylabel("loss and accuracy")
 plt.xlabel("epoch")
 plt.legend(["train_loss", "train_accuracy"], loc="upper right")
-plt.savefig("stat/model_loss_accuracy_base_"+ str(epochs) + ".png")
+plt.savefig("stat/model_loss_accuracy_" + nom + "_"+ str(epochs) + ".png")
 
 score ,acc = model.evaluate(x_test,y_test)
 print("Score is :",score)
