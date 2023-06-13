@@ -55,7 +55,7 @@ Executé le init.py au clonage du repo
         </tr>
         <tr>
             <td>Image decalle: 209 895 images</td>
-            <td>99.22 %</td>
+            <td>99.77 %</td>
             <td><img src="stat/model_loss_accuracy_decalle_20.png"></th>
             <td>99.85 %</td>
             <td><img src="stat/model_loss_accuracy_decalle_30.png"></th>
