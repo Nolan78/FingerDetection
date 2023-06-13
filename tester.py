@@ -7,8 +7,8 @@ import shutil
 
 # dimensions des images d'entrée
 img_rows, img_cols = 28, 28
-pathTest = 'test-image/'
-pathTrain = 'train-image/'
+pathTest = "test-image/"
+pathTrain = "train-image/"
 logger = False
 
 # charger le modèle entraîné
@@ -26,7 +26,7 @@ def preprocess_image(img_path):
     return x
 
 # classes de sortie du modèle
-classes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+classes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 nombreTotalDeTest = 0
 nombreDeReussite = 0
 nombreDeFailed = 0
@@ -37,14 +37,14 @@ for file in tqdm(os.listdir(pathTest)):
     nombreTotalDeTest += 1
     
     # Create directory if not exist
-    if not os.path.exists(pathTest + classes[np.argmax(prediction)] + '/'):
-        os.makedirs(pathTest + classes[np.argmax(prediction)] + '/')
+    if not os.path.exists(pathTest + classes[np.argmax(prediction)] + "/"):
+        os.makedirs(pathTest + classes[np.argmax(prediction)] + "/")
         
     # copy file to test folder
-    shutil.copyfile(pathTest + file, pathTest + classes[np.argmax(prediction)] + '/' + file)
+    shutil.copyfile(pathTest + file, pathTest + classes[np.argmax(prediction)] + "/" + file)
     
-    if logger: print(pathTrain + classes[np.argmax(prediction)] + '/' + file)
-    if os.path.isfile(pathTrain + classes[np.argmax(prediction)] + '/' + file):
+    if logger: print(pathTrain + classes[np.argmax(prediction)] + "/" + file)
+    if os.path.isfile(pathTrain + classes[np.argmax(prediction)] + "/" + file):
         nombreDeReussite += 1
         if logger: print("TEST OK ✅")
     else:
@@ -54,4 +54,4 @@ for file in tqdm(os.listdir(pathTest)):
 print("Nombre total de test:", nombreTotalDeTest)
 print("Nombre de test réussie:", nombreDeReussite)
 print("Nombre de test ratée ", nombreDeFailed)
-print("Taux de réussite:", nombreDeReussite/nombreTotalDeTest * 100, '%')
+print("Taux de réussite:", nombreDeReussite/nombreTotalDeTest * 100, "%")
