@@ -1,21 +1,21 @@
 import streamlit as st
-import captcha
+from captcha import show_page as captcha_show_page
+from try_page import show_page as try_show_page
 
 # Page layout
 class Page1:
     def __init__(self):
         self.title = "Captcha"
     def show_content(self):
-        captcha.show_page(self)
+        captcha_show_page(self)
 
 
 class Page2:
     def __init__(self):
-        self.title = "Page 2"
+        self.title = "Try"
 
     def show_content(self):
-        st.header(self.title)
-        st.write("Contenu de la page 2")
+        try_show_page(self)
 
 class Page3:
     def __init__(self):
@@ -28,7 +28,7 @@ class Page3:
 # Liste des pages disponibles
 pages = {
     "Captcha": Page1(),
-    "Page 2": Page2(),
+    "Try": Page2(),
     "Page 3": Page3()
 }
 

@@ -79,11 +79,7 @@ def show_page(self):
             prediction = model.predict(test_image, verbose = False)
             print(prediction)
             # Recupere les 3 plus grandes valeurs avec leurs pourcentages
-            top3 = np.argsort(prediction[0])[:-4:-1]
-            # Affiche les 3 plus grandes valeurs avec leurs pourcentages sans for
-            print("Prediction: ", classes[top3[0]], "(", round(prediction[0][top3[0]] * 100, 2), "%)")
-            for i in range(3):
-                print("{}".format(classes[top3[i]])+" ({:.3})".format(prediction[0][top3[i]]))
+            top3 = np.argsort(prediction[0])[:-4:-1]        
 
             resultat = "false"
             print(randomNumber, int(np.argmax(prediction)))
@@ -122,8 +118,6 @@ def show_page(self):
                 
                 st.markdown(html_code, unsafe_allow_html=True)
                 bind_socket()
-                canvas_result.json_data = {}
-
                 
             # On delete le fichier dans temp dans tout les cas
             os.unlink(file_path_temp)
