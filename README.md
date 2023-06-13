@@ -1,5 +1,6 @@
 # Detection image de chiffre manuscrit
 
+Executé le init.py au clonage du repo
 
 <table>
     <thead>
