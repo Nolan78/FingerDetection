@@ -1,7 +1,6 @@
 import streamlit as st
 import captcha
 
-st.set_page_config(page_title="Google Killer", page_icon="📝", layout="wide")
 # Page layout
 class Page1:
     def __init__(self):

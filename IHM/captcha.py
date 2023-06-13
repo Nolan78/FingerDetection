@@ -10,12 +10,14 @@ import numpy as np
 from keras.models import load_model
 from keras.utils import load_img, img_to_array
 
+st.set_page_config(page_title="Google Killer", page_icon="📝", layout="wide")
+
 def bind_socket():
+    global randomNumber
     randomNumber = random.randint(0, 9)
     print("Random number: ", randomNumber) 
-    return randomNumber
 
-randomNumber=bind_socket()
+bind_socket()
 
 # Define canvas parameters
 canvas_width = 200
@@ -46,7 +48,7 @@ def show_page(self):
             width=canvas_width,
             height=canvas_height,
             drawing_mode="freedraw",  # Drawing mode (freehand drawing)
-            key="canvas",
+            key="canvas"
         )
 
     # Save the drawn image upon button click
@@ -99,6 +101,7 @@ def show_page(self):
             else:
                 st.error("The result given by the AI is "+ classes[np.argmax(prediction)] + " so it's " + resultat + " !")
                 random_int = random.choice([1, 2])
+
                 # Lire le fichier GIF en tant que tableau d'octets
                 with open("giphy"+str(random_int)+".gif", "rb") as file:
                     gif_bytes = file.read()
@@ -110,6 +113,9 @@ def show_page(self):
                 html_code = f'<img src="data:image/gif;base64,{gif_base64}" alt="gif" />'
                 
                 st.markdown(html_code, unsafe_allow_html=True)
+                bind_socket()
+                canvas_result.json_data = {}
+
                 
             # On delete le fichier dans temp dans tout les cas
             os.unlink(file_path_temp)
