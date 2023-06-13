@@ -94,7 +94,7 @@ def show_page(self):
                 file_path_retrain = os.path.join(file_path_re_train, fileName)
                 shutil.copyfile(file_path_temp, file_path_retrain)
                 # TODO: Entrainer sur les images de retrain-image/ puis re save les poids
-                st.success("The result given by the AI is "+ classes[np.argmax(prediction)] + " so it's " + resultat + " !")
+                st.success("The result given by the AI is "+ classes[np.argmax(prediction)] + " at " + str(round(prediction[0][top3[0]] * 100, 2)) + "%" + " so it's " + resultat + " !")
                 # Lire le fichier GIF en tant que tableau d'octets
                 with open("giphy.gif", "rb") as file:
                     gif_bytes = file.read()
