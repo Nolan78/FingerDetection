@@ -7,12 +7,10 @@ from werkzeug.utils import secure_filename
 from keras.models import load_model
 
 UPLOAD_FOLDER = './temp'
-ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 img_rows = 28 
 img_cols = 28
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     
 # fonction pour prétraitement l"image
 def preprocess_image(img_path):
@@ -35,7 +33,7 @@ def upload_file():
     
     file = request.files['file']
     filename = secure_filename(file.filename)
-    temp_image_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+    temp_image_path = os.path.join(UPLOAD_FOLDER, filename)
     file.save(temp_image_path)
     
     # charger le modèle entraîné
