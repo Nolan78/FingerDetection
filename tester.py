@@ -12,10 +12,10 @@ pathTrain = 'train-image/'
 logger = False
 
 # charger le modèle entraîné
-model = load_model("model.h5")
+model = load_model("model/model.h5")
 
 # charger les poids entraînés
-model.load_weights("model_weights.h5")
+model.load_weights("model/model_weights.h5")
 
 # fonction pour prétraiter l'image
 def preprocess_image(img_path):
