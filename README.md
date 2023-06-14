@@ -27,6 +27,16 @@ Executé le init.py au clonage du repo
         <tr>
             <td>Re entrainé ensuite</td>
             <td>Clément</td>
+            <td>Fait</td>
+        </tr>
+        <tr>
+            <td>Rajouter la fonction audio</td>
+            <td>Léo</td>
+            <td>En cours</td>
+        </tr>
+        <tr>
+            <td>Rajouter la conversion en image noir et blanc automatique pour gérer un mode daltonien</td>
+            <td>Léo</td>
             <td>En cours</td>
         </tr>
     </tbody>
