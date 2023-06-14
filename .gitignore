@@ -1,6 +1,7 @@
 /train-image/*
 /train-bigger-image
 /train-image-decalle
+/train-image-decalle-plus
 /retrain-image
 /test-image
 /temp-image/*
