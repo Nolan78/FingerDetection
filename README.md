@@ -2,6 +2,9 @@
 
 Executé le init.py au clonage du repo
 
+Le dataset <https://www.kaggle.com/datasets/scolianni/mnistasjpg/discussion>
+archive.zip > trainingSet > trainingSet
+
 <table>
     <thead>
         <tr>
