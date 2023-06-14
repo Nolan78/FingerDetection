@@ -6,9 +6,7 @@ from keras.utils import to_categorical
 import keras.backend as K
 from sklearn.model_selection import train_test_split
 
-nom = "decalle"
-path = "train-image/"
-classes = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+nom = "decalle_plus"
 
 img_rows = 28 
 img_cols = 28
@@ -19,7 +17,7 @@ Y = np.load("model/Y_numpy_array.npy")
 
 # Now defining some parameters for our model
 num_classes = 10
-epochs = 20
+epochs = 30
 
 x_train,x_test,y_train,y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 

@@ -73,5 +73,12 @@ archive.zip > trainingSet > trainingSet
             <td>99.85 %</td>
             <td><img src="stat/model_loss_accuracy_decalle_30.png"></th>
         </tr>
+        <tr>
+            <td>Image decalle PLUS: 545 727 images</td>
+            <td>99.89 %</td>
+            <td><img src="stat/model_loss_accuracy_decalle_plus_20.png"></th>
+            <td>99.94 %</td>
+            <td><img src="stat/model_loss_accuracy_decalle_plus_30.png"></th>
+        </tr>
     </tbody>
 </table>
