@@ -9,6 +9,9 @@ from streamlit_drawable_canvas import st_canvas
 import numpy as np
 from keras.models import load_model
 from keras.utils import load_img, img_to_array
+import colorama
+from colorama import Fore, Style
+
 
 st.set_page_config(page_title="Google Killer", page_icon="📝", layout="wide")
 
@@ -18,6 +21,11 @@ def bind_socket():
     print("Random number: ", randomNumber) 
 
 bind_socket()
+
+# Initialiser colorama
+colorama.init()
+
+
 
 # Define canvas parameters
 canvas_width = 200
@@ -33,18 +41,27 @@ def preprocess_image(img_path):
 
 def show_page(self):
     st.header(self.title)
-    st.write("Captcha")
+    # st.write("Captcha")
         
     # Center the canvas
     col1, col2 = st.columns(2)
     with col1:
         st.write("Nous voudrions un " + str(randomNumber) + " !")
     with col2:
+        # Sélection de la couleur de fond
+        background_color = st.color_picker("Couleur de fond", "#000000")
+
+        # Sélection de la couleur du pinceau
+        brush_color = st.color_picker("Couleur du pinceau", "#ffffff")
+
+
         canvas_result = st_canvas(
-            fill_color="rgba(255, 165, 0, 0.3)",  # Initial fill color
+            # fill_color="rgba(255, 165, 0, 0.3)",  # Initial fill color
+            # fill_color=brush_color,
             stroke_width=stroke_width,  # Stroke width
-            stroke_color="white",  # Stroke color
-            background_color="black",  # Background color
+            stroke_color=brush_color,  # Stroke color
+            # background_color="black",  # Background color
+            background_color=background_color,  # Background color
             width=canvas_width,
             height=canvas_height,
             drawing_mode="freedraw",  # Drawing mode (freehand drawing)
@@ -54,9 +71,26 @@ def show_page(self):
     # Save the drawn image upon button click
     if st.button("Save"):
         if canvas_result.image_data is not None:
-            # Convert canvas data to PIL image
-            img_array = canvas_result.image_data.astype(np.uint8)
-            img = Image.fromarray(img_array)
+            # Convertir le résultat du canvas en image
+            image_data = np.array(canvas_result.image_data)
+
+            # Convertir les couleurs en format hexadécimal en valeurs RVB entières
+            brush_color_rgb = tuple(int(brush_color.lstrip("#")[i:i+2], 16) for i in (0, 2, 4))
+            background_color_rgb = tuple(int(background_color.lstrip("#")[i:i+2], 16) for i in (0, 2, 4))
+
+            # Définir la tolérance de comparaison
+            tolerance = 10
+
+            # Réformer l'image avec la couleur du pinceau en blanc et la couleur de fond en noir
+            brush_mask = np.all(np.abs(image_data[:, :, :3].astype(int) - np.array(brush_color_rgb)) <= tolerance, axis=-1)
+            background_mask = np.all(np.abs(image_data[:, :, :3].astype(int) - np.array(background_color_rgb)) <= tolerance, axis=-1)
+            image_data[brush_mask] = [255, 255, 255, 255]  # Couleur du pinceau en blanc
+            image_data[background_mask] = [0, 0, 0, 255]  # Couleur de fond en noir
+
+            # Convertir les données de l'image en format PIL
+            img = Image.fromarray(image_data.astype(np.uint8))
+
+            # Enregistrer l'image avec les nouvelles couleurs au format PNG
             img.save("temp.png")
 
             # Save the image as a PNG file
@@ -65,8 +99,10 @@ def show_page(self):
             fileName = timestamp + "-" + str(randomNumber) + ".jpg"
             file_path_temp = os.path.join(pathTempImage, fileName)
             im = Image.open("temp.png")
+            
             rgb_im = im.convert('RGB')
             rgb_im.save(file_path_temp)
+
             os.unlink("temp.png")
             classes = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
             
