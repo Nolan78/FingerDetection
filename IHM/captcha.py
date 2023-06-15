@@ -91,7 +91,7 @@ def show_page(self):
                     os.makedirs(file_path_retrain)                
                 shutil.copyfile(file_path_temp, file_path_retrain + fileName)
                 # TODO: Entrainer sur les images de retrain-image/ puis re save les poids
-                st.success("The result given by the AI is "+ classes[np.argmax(prediction)] + " at " + str(round(prediction[0][top3[0]] * 100, 2)) + "%" + " so it's " + resultat + " !")
+                st.success("The result given by the AI is "+ classes[np.argmax(prediction)] + " at " + str(round(prediction[0][top3[0]] * 100, 2)) + "%" + " !")
                 # Lire le fichier GIF en tant que tableau d'octets
                 with open("giphy.gif", "rb") as file:
                     gif_bytes = file.read()
@@ -108,7 +108,7 @@ def show_page(self):
                 file_path_to_validate = os.path.join(file_path_to_validate, fileName)
                 shutil.copyfile(file_path_temp, file_path_to_validate)
                 
-                st.error("The result given by the AI is "+ classes[np.argmax(prediction)] + " at " + str(round(prediction[0][top3[0]] * 100, 2)) + "%" + " so it's " + resultat + " !")
+                st.error("The result given by the AI is "+ classes[np.argmax(prediction)] + " at " + str(round(prediction[0][top3[0]] * 100, 2)) + "%" + " !")
                 random_int = random.choice([1, 2])
 
                 # Lire le fichier GIF en tant que tableau d'octets
