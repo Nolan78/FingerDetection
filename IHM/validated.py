@@ -1,16 +1,10 @@
-import streamlit as st
-import os
-from PIL import Image
-
-
-# Chemin du dossier contenant les images à valider
-dossier_parent = "../to-validate-image"
-
 import os
 import shutil
 import streamlit as st
 from PIL import Image
 
+# Chemin du dossier contenant les images à valider
+dossier_parent = "../to-validate-image"
 
 def afficher_images_dossier(dossier_parent):
     # Liste des chemins des images
