@@ -1,10 +1,7 @@
 import streamlit as st
 import time
-import shutil
-import base64
 from PIL import Image
 import os
-import random
 from streamlit_drawable_canvas import st_canvas
 import numpy as np
 from keras.models import load_model
