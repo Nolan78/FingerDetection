@@ -81,10 +81,8 @@ def show_page(self):
             # Recupere les 3 plus grandes valeurs avec leurs pourcentages
             top3 = np.argsort(prediction[0])[:-4:-1]        
 
-            resultat = "false"
             print(randomNumber, int(np.argmax(prediction)))
             if randomNumber == int(np.argmax(prediction)): 
-                resultat = "true"
                 # copy temp file to retrain directory
                 file_path_re_train = "../retrain-image/"
                 file_path_retrain = os.path.join(file_path_re_train, fileName)
@@ -103,6 +101,10 @@ def show_page(self):
                 
                 st.markdown(html_code, unsafe_allow_html=True)
             else:
+                file_path_to_validate = "../to-validate-image/"
+                file_path_to_validate = os.path.join(file_path_to_validate, fileName)
+                shutil.copyfile(file_path_temp, file_path_to_validate)
+                
                 st.error("The result given by the AI is "+ classes[np.argmax(prediction)] + " at " + str(round(prediction[0][top3[0]] * 100, 2)) + "%" + " so it's " + resultat + " !")
                 random_int = random.choice([1, 2])
 
