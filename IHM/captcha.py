@@ -103,7 +103,7 @@ def show_page(self):
                 
                 st.markdown(html_code, unsafe_allow_html=True)
             else:
-                file_path_to_validate = os.path.join("../to-validate-image/", fileName)
+                file_path_to_validate = os.path.join("../to-validate-image/", str(randomNumber))
                 # Création du dossier au besoin
                 if not os.path.exists(file_path_to_validate):
                     os.makedirs(file_path_to_validate)
