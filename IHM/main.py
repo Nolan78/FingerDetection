@@ -10,18 +10,15 @@ class Page1:
     def show_content(self):
         captcha_show_page(self)
 
-
 class Page2:
     def __init__(self):
         self.title = "Try"
-
     def show_content(self):
         try_show_page(self)
 
 class Page3:
     def __init__(self):
         self.title = "Verifie les images"
-
     def show_content(self):
         validated_show_page(self)
 
