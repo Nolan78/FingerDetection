@@ -31,6 +31,7 @@ def afficher_images_dossier(dossier_parent):
     chemin_image_actuel = chemins_images[0]
     image = Image.open(chemin_image_actuel)
     st.image(image, caption=chemin_image_actuel, use_column_width=True, width=100)   
+    st.write("Le numéro de l'image a verfier est "+ str(chemin_image_actuel[-5:-4]))
 
     # Boutons pour les actions
     if st.button("Valider", key="valider"+str(chemin_image_actuel) ):
