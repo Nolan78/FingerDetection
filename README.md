@@ -40,7 +40,7 @@ archive.zip > trainingSet > trainingSet
         <tr>
             <td>Rajouter la conversion en image noir et blanc automatique pour gérer un mode daltonien</td>
             <td>Léo</td>
-            <td>En cours</td>
+            <td>Fait</td>
         </tr>
     </tbody>
 </table>

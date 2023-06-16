@@ -53,3 +53,25 @@ for subfolder in subfolders:
             # Décalage de l'image vers le bas
             shifted_down = np.roll(image, pixels, axis=0)
             cv2.imwrite(os.path.join(output_subfolder, f"down_{pixels}_{filename}"), shifted_down)
+        
+        # Décalages diagonaux
+        for pixels in range(1, 4):
+            # Décalage de l'image vers le haut et la gauche
+            shifted_up_left = np.roll(image, -pixels, axis=0)
+            shifted_up_left = np.roll(shifted_up_left, -pixels, axis=1)
+            cv2.imwrite(os.path.join(output_subfolder, f"up_left_{pixels}_{filename}"), shifted_up_left)
+            
+            # Décalage de l'image vers le haut et la droite
+            shifted_up_right = np.roll(image, -pixels, axis=0)
+            shifted_up_right = np.roll(shifted_up_right, pixels, axis=1)
+            cv2.imwrite(os.path.join(output_subfolder, f"up_right_{pixels}_{filename}"), shifted_up_right)
+            
+            # Décalage de l'image vers le bas et la gauche
+            shifted_down_left = np.roll(image, pixels, axis=0)
+            shifted_down_left = np.roll(shifted_down_left, -pixels, axis=1)
+            cv2.imwrite(os.path.join(output_subfolder, f"down_left_{pixels}_{filename}"), shifted_down_left)
+            
+            # Décalage de l'image vers le bas et la droite
+            shifted_down_right = np.roll(image, pixels, axis=0)
+            shifted_down_right = np.roll(shifted_down_right, pixels, axis=1)
+            cv2.imwrite(os.path.join(output_subfolder, f"down_right_{pixels}_{filename}"), shifted_down_right)
