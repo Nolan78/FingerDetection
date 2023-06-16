@@ -34,8 +34,9 @@ def afficher_images_dossier(dossier_parent):
 
     # Boutons pour les actions
     if st.button("Valider", key="valider"+str(chemin_image_actuel) ):
-        # On met l'url de l'image dans le dossier retrain-image
-        shutil.move(chemin_image_actuel, "../retrain-image")
+        # On met l'url de l'image dans le dossier retrain-image et le dossier correspondant au numéro
+        shutil.move(chemin_image_actuel, "../retrain-image/"+chemin_image_actuel[-5:-4])
+
         st.info("L'image a été validée.")
         st.experimental_rerun()
     
@@ -45,20 +46,19 @@ def afficher_images_dossier(dossier_parent):
         st.info("L'image a été supprimée.")
         st.experimental_rerun()
 
+    name = st.text_input('Numéro')
     if st.button("Changer le numéro", key="changer_numero"+str(chemin_image_actuel) ):
         # Saisie du nouveau numéro
-        with st.form(key="changer_numero_form"):
-            # Saisie du nouveau numéro
-            nouveau_numero = st.text_input("Entrez le nouveau numéro de l'image :", key="nouveau_numero")
-
-            # Soumettre le formulaire
-            submit_button = st.form_submit_button("Submit")
-
-        # Vérifier si le formulaire est soumis et le champ de saisie n'est pas vide
-        if submit_button:
-
-            st.write("You entered: ", nouveau_numero)
-            print("You entered: ", nouveau_numero)
+        if not name:
+            st.warning('Please input a numéro.')
+            st.stop()
+        # On renomme l'image avec le numéro 1686822100-x.jpg (x = numéro) et on la met dans le dossier retrain-image
+        chemin_image_nouveau = chemin_image_actuel.replace(chemin_image_actuel[-5:-4], name)
+        os.rename(chemin_image_actuel, chemin_image_nouveau) 
+        # On met l'url de l'image dans le dossier retrain-image et le dossier correspondant au numéro
+        shutil.move(chemin_image_nouveau, "../retrain-image/"+name)
+        st.info("L'image a été renommée.")
+        st.experimental_rerun()
 
 # Appel de la fonction pour afficher les images
 afficher_images_dossier(dossier_parent)
