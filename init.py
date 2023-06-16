@@ -9,3 +9,13 @@ for dossier in dossier_liste:
     if not os.path.exists(dossier):
         # Crée le dossier s'il n'existe pas
         os.makedirs(dossier)
+
+# Liste des noms des dossier à créer dans le dossier api
+dossier_liste_api = ["temp"]
+
+# Parcours de la liste
+for dossier in dossier_liste_api:
+    # Vérifie si le dossier existe
+    if not os.path.exists("api/" + dossier):
+        # Crée le dossier s'il n'existe pas
+        os.makedirs("api/" + dossier)
